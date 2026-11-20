@@ -1,0 +1,363 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>PracMentor – ME422S Fluid Mechanics Lab</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+:root{--bg:#eef1ef;--sf:#fff;--ink:#14232b;--mu:#5a6b73;--ac:#0e7c86;--am:#c47f00;--ln:#d3dbd8;--ok:#1b7f3b;--bad:#b3261e;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0f1a1f;--sf:#17262d;--ink:#e6eeeb;--mu:#93a6ad;--ac:#3fc1cc;--am:#f0b429;--ln:#2a3d46;--ok:#5fd68a;--bad:#ff8a80}}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "IBM Plex Sans",system-ui,sans-serif}
+header{background:var(--sf);border-bottom:1px solid var(--ln);position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+.hd{max-width:1100px;margin:auto;padding:10px 14px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+h1{font-size:19px;margin:0;letter-spacing:.2px}h1 small{display:block;font-weight:400;color:var(--mu);font-size:12px}
+nav{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto}
+button,select,input,textarea{font:inherit;color:inherit}
+nav button{background:none;border:1px solid transparent;padding:6px 11px;border-radius:6px;cursor:pointer}
+nav button.on{border-color:var(--ac);color:var(--ac);font-weight:600}
+main{max-width:1100px;margin:auto;padding:16px 14px 60px}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:10px;padding:14px;margin-bottom:14px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:760px){.g2{grid-template-columns:1fr}}
+.btn{background:var(--ac);color:#fff;border:0;padding:8px 14px;border-radius:6px;cursor:pointer;font-weight:600}.btn.alt{background:none;color:var(--ac);border:1px solid var(--ac)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .btn{color:#0f1a1f}}
+.ex{display:flex;gap:6px;flex-wrap:wrap}.ex button{border:1px solid var(--ln);background:var(--sf);border-radius:6px;padding:5px 9px;cursor:pointer;font-size:13px}.ex button.on{border-color:var(--ac);background:var(--ac);color:#fff}
+.sl{display:grid;grid-template-columns:130px 1fr 80px;gap:8px;align-items:center;margin:6px 0}.sl output{font-family:"IBM Plex Mono",monospace;text-align:right}
+.rd{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:10px 0}.rd div{background:var(--bg);border-radius:6px;padding:8px}.rd b{display:block;font:500 20px "IBM Plex Mono",monospace;color:var(--am)}.rd span{font-size:12px;color:var(--mu)}
+table{border-collapse:collapse;width:100%;font-size:13px}th,td{border-bottom:1px solid var(--ln);padding:5px 6px;text-align:left}.sc{overflow-x:auto}
+input[type=text],input[type=number],textarea,select{background:var(--bg);border:1px solid var(--ln);border-radius:6px;padding:7px;width:100%}
+.mu{color:var(--mu);font-size:13px}.ok{color:var(--ok)}.bad{color:var(--bad)}
+.msg{padding:9px 12px;border-radius:8px;margin:8px 0;max-width:92%;white-space:pre-wrap}.u{background:var(--ac);color:#fff;margin-left:auto}.b{background:var(--bg)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .u{color:#0f1a1f}}
+.src{font-size:12px;color:var(--mu);border-left:3px solid var(--am);padding-left:8px;margin-top:6px}
+.opt{display:block;width:100%;text-align:left;border:1px solid var(--ln);background:var(--sf);border-radius:6px;padding:8px;margin:5px 0;cursor:pointer}.opt.ok{border-color:var(--ok)}.opt.bad{border-color:var(--bad)}
+svg text{fill:var(--mu);font-size:9px}@keyframes sp{to{transform:rotate(360deg)}}#fw{transform-origin:140px 100px;animation:sp 2s linear infinite}
+@media(prefers-reduced-motion:reduce){#fw{animation:none}}
+h2{font-size:16px;margin:0 0 8px}
+.o{fill:none;stroke:var(--ac);stroke-width:2}.k{fill:none;stroke:var(--ink);stroke-width:2}.a{fill:var(--am)}.fl{fill:none;stroke-dasharray:6 5;animation:dash 1s linear infinite}@keyframes dash{to{stroke-dashoffset:-22}}.spin{transform-box:fill-box;transform-origin:center;animation:sp 1.5s linear infinite}.osc{animation:osc .8s ease-in-out infinite}@keyframes osc{50%{transform:translateY(40px)}}.flk{transform-box:fill-box;transform-origin:bottom;animation:flk .6s ease-in-out infinite}@keyframes flk{50%{transform:scaleY(1.35)}}.sw{animation:sw 2s ease-in-out infinite alternate}@keyframes sw{to{transform:translateX(50px)}}
+@media(prefers-reduced-motion:reduce){.fl,.spin,.osc,.flk,.sw{animation:none}}
+.hero h2{font:700 38px/1.1 "IBM Plex Sans",system-ui,sans-serif;margin:0;color:var(--ink)}.hero h2 span{color:var(--am)}.hero p{font-size:17px;color:var(--mu);margin:8px 0 14px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-bottom:14px}
+.step{text-align:left;background:var(--sf);border:1px solid var(--ln);border-radius:14px;padding:16px;cursor:pointer;display:flex;flex-direction:column;gap:8px}.step:hover,.step:focus-visible{border-color:var(--ac);outline:none}
+.step i{font:700 20px "IBM Plex Mono",monospace;font-style:normal;width:40px;height:40px;border-radius:20px;background:var(--am);color:#14232b;display:flex;align-items:center;justify-content:center}
+.step b{font-size:19px}.step span{color:var(--mu);font-size:14px}.step em{font-style:normal;color:var(--ac);font-weight:600;font-size:14px;margin-top:auto}
+.roles2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}.roles2 .card{margin:0}.roles2 .ex{margin-top:8px}.roles2 .ex button{font-size:14px;padding:7px 11px}
+</style></head><body>
+<header><div class="hd"><h1><span style="display:block;font-size:24px;font-weight:600;color:var(--ac);letter-spacing:.3px">PracMentor</span>ExperiMentors · ME422S<small>Fluid Mechanics &amp; Hydraulic Machines Lab · Digital Twin</small></h1>
+<nav id="nav"></nav><span id="who" class="mu"></span><button class="btn alt" id="so" style="display:none" onclick="signOut()">Sign out</button><select id="role" style="display:none" onchange="S.role=this.value;go(S.tab)"><option value="student">Student</option><option value="faculty">Faculty</option></select></div></header>
+<main id="v"></main>
+<script>
+const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),n3=x=>+(+x).toPrecision(4);
+/* ===== CONFIG AND ADAPTERS: the plug-in points for a real backend =====
+   mode 'local' = demo, everything stays in this browser (NOT secure).
+   mode 'http'  = set apiBase to your server; see the handoff spec for the endpoints. */
+const CFG={mode:'local',apiBase:'',facultyCode:'faculty123'};
+const lsGet=k=>{try{return JSON.parse(localStorage.getItem(k)||'null')}catch(e){return null}},lsSet=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+const LocalAdapter={shared:false,
+ signIn:async(role,id,name,secret)=>{if(role==='faculty'&&secret!==CFG.facultyCode)throw new Error('Wrong faculty access code.');let u={id,name,role};lsSet('fm_user',u);return u},
+ signOut:()=>{lsSet('fm_user',null)},
+ restore:()=>lsGet('fm_user'),
+ load:async(u,db)=>{let sh=lsGet('fm')||{},pe=lsGet('fmu:'+u.id)||{};['docs','ovr','qs','sub'].forEach(k=>{if(sh[k]!==undefined)db[k]=sh[k]});['quiz','viva','sim'].forEach(k=>{if(Array.isArray(pe[k]))db[k]=pe[k]})},
+ save:(u,db)=>{if(!u)return;if(u.role==='faculty')lsSet('fm',{docs:db.docs,ovr:db.ovr,qs:db.qs,sub:db.sub});lsSet('fmu:'+u.id,{quiz:db.quiz,viva:db.viva,sim:db.sim})},
+ submitResults:async()=>({ok:false}),
+ fetchSubmissions:async()=>[]
+};
+const http=async(m,p,b)=>{let r=await fetch(CFG.apiBase+p,{method:m,credentials:'include',headers:{'Content-Type':'application/json'},body:b?JSON.stringify(b):undefined});if(!r.ok)throw new Error(r.status==401?'Not signed in, or wrong credentials.':'Server error '+r.status);return r.status==204?null:r.json()};
+const HttpAdapter={shared:true,
+ signIn:async(role,id,name,secret)=>(await http('POST','/auth/login',{role,id,name,secret})).user,
+ signOut:()=>http('POST','/auth/logout').catch(()=>{}),
+ restore:()=>http('GET','/auth/me').then(r=>r&&r.user).catch(()=>null),
+ load:async(u,db)=>{let me=await http('GET','/data/me'),sh=await http('GET','/data/shared');['quiz','viva','sim'].forEach(k=>{if(me&&Array.isArray(me[k]))db[k]=me[k]});['docs','ovr','qs'].forEach(k=>{if(sh&&sh[k]!==undefined)db[k]=sh[k]})},
+ save:(u,db)=>{if(!u)return;clearTimeout(HttpAdapter.t);HttpAdapter.t=setTimeout(()=>{http('PUT','/data/me',{quiz:db.quiz,viva:db.viva,sim:db.sim}).catch(()=>{});if(u.role==='faculty')http('PUT','/data/shared',{docs:db.docs,ovr:db.ovr,qs:db.qs}).catch(()=>{})},600)},
+ submitResults:(u,pack)=>http('POST','/submissions',pack).then(()=>({ok:true})),
+ fetchSubmissions:()=>http('GET','/submissions')
+};
+const cl=v=>JSON.parse(JSON.stringify(v===undefined?null:v));
+const setSync=ok=>{if(USER)$('#who').textContent=USER.name+' · '+USER.role+(ok?'':' · not syncing')};
+/* Shared mode: runs inside a published claude.ai page. Identity comes from claude.ai (no passwords);
+   faculty = anyone who can edit the page, students = other signed-in people with Contributor access. */
+const ArtifactAdapter={shared:true,managed:true,u:null,d:null,t:null,last:'',n:0,
+ async init(){try{if(!window.claude||!window.claude.use)return false;const [u,d]=await Promise.all([claude.use('user'),claude.use('db')]);if(!u||!d)return false;this.u=u;this.d=d;return true}catch(e){return false}},
+ async restore(){const me=await this.u.me();if(!me||!me.id)return null;return{id:me.id,name:me.name||'Signed-in user',role:(await this.u.canEdit())?'faculty':'student'}},
+ signOut(){},
+ async load(u,db){await LocalAdapter.load(u,db);try{
+  const p=await this.d.doc('data/users/'+u.id+'/progress').get();if(p.exists){const x=p.data();['quiz','viva','sim'].forEach(k=>{if(Array.isArray(x[k]))db[k]=cl(x[k])});if(typeof x.roll==='string')db.roll=x.roll}
+  const c=await this.d.doc('course/config').get();if(c.exists){const x=c.data();if(x.qs!==undefined)db.qs=cl(x.qs)}
+  const ms=await this.d.collection('materials').get();this.n=ms.docs.length;if(ms.docs.length){db.docs=cl(ms.docs.map(q=>q.data()).sort((a,b)=>a.i-b.i).map(x=>({name:x.name,pages:x.pages})));this.last=JSON.stringify(db.docs)}
+  if(u.role==='faculty'){const o=await this.d.doc('marks/overrides').get();if(o.exists&&o.data().map)db.ovr=cl(o.data().map)}
+ }catch(e){console.warn(e);setSync(false)}},
+ save(u,db){if(!u)return;LocalAdapter.save(u,db);clearTimeout(this.t);this.t=setTimeout(()=>this.flush(u,db),700)},
+ async flush(u,db){try{
+  await this.d.doc('data/users/'+u.id+'/progress').set(cl({quiz:db.quiz,viva:db.viva,sim:db.sim,roll:db.roll||''}));
+  if(u.role==='faculty'){await this.d.doc('course/config').set(cl({qs:db.qs}));await this.d.doc('marks/overrides').set(cl({map:db.ovr||{}}));
+   const j=JSON.stringify(db.docs);if(j!==this.last){const n=(db.docs||[]).length;for(let i=0;i<n;i++)await this.d.doc('materials/m'+i).set(cl({i,name:db.docs[i].name,pages:db.docs[i].pages}));for(let i=n;i<this.n;i++)await this.d.doc('materials/m'+i).delete();this.n=n;this.last=j}}
+  setSync(true)}catch(e){console.warn(e);setSync(false)}},
+ async submitResults(u,pack){const o=cl(pack);delete o.name;o.roll=DB.roll||'';await this.d.doc('submissions/'+u.id).set(o);return{ok:true}},
+ async fetchSubmissions(){const sn=await this.d.collection('submissions').get(),ps=await this.u.profiles(sn.docs.map(q=>q.id)).catch(()=>({}));return sn.docs.map(q=>{const o=cl(q.data()),pr=ps&&ps[q.id];o.name=((pr&&pr.name)||'Student')+(o.roll?' ('+o.roll+')':'');return o})}
+};
+let BACKEND=CFG.mode==='http'?HttpAdapter:LocalAdapter;
+let USER=null;
+const who=()=>{if(!USER)return'';let r=DB.roll||(BACKEND.managed?'':USER.id);return USER.name+(r?' ('+r+')':'')};
+let DB={quiz:[],viva:[],sim:[],ovr:{},qs:null,docs:null,sub:{}};
+const save=()=>{BACKEND.save(USER,DB)};
+const S={tab:'lab',role:'student',ex:0,p:{},rows:[],chat:[],mode:'tutor',viva:null,qz:null,rev:[]};
+
+/* ---------- 10 experiments (ME522S Thermal Engineering Lab) ---------- */
+const G=9.81,AR=d=>Math.PI*d*d/4,QQ=(H,a1,a2,c=1)=>c*a1*a2*Math.sqrt(2*G*H)/Math.sqrt(a1*a1-a2*a2),H2h=(Q,a1,a2,c)=>Math.pow(Q*Math.sqrt(a1*a1-a2*a2)/(c*a1*a2),2)/(2*G);
+const meter=(n,fx,d1,d2,c0,ref)=>({n,fx,P:[['h','Manometer difference hm',2,20,10,1,'cm Hg']],ti:1,f(p){let a1=AR(d1),a2=AR(d2),H=p.h*.126,Qt=QQ(H,a1,a2),Qa=c0*Qt,t=.025/Qa;return{o:[['Manometer hm',p.h,'cm Hg'],['Time for 10 cm rise',t,'s']],r:[['Head H',H,'m water'],['Theoretical discharge',Qt,'m³/s'],['Actual discharge',Qa,'m³/s'],['Cd',Qa/Qt,'']],k:3,ref,cal:[H*100,Qa*1e6]}}});
+const E=[
+{n:'Metacentric height & radius of gyration',fx:'V = (h2 − h1)·AT (tank 0.8 m × 0.8 m);  Wvessel = ρgV;  GM = wX/(W tanθ), W = Wvessel + w;  K = (T/2π)√(g·GM), T = t10/10',
+ P:[['w','Added weight',200,300,200,100,'g'],['X','Weight moved by',2,10,6,2,'cm']],
+ f(p){let W0=94.2,w=p.w/1000*G,X=p.X/100,GM=.06,W=W0+w,th=Math.atan(w*X/(W*GM)),T=2*Math.PI*.18/Math.sqrt(G*GM);return{o:[['Water rise h2−h1',1.5,'cm'],['Weight w',p.w,'g'],['Distance X',p.X,'cm'],['Tilt θ',th*180/Math.PI,'°'],['Time, 10 oscillations',10*T,'s']],r:[['Metacentric height GM',w*X/(W*Math.tan(th)),'m'],['Vessel weight',W0,'N'],['Radius of gyration K',.18,'m']],k:0,ref:[.02,.15],th:th*180/Math.PI,T}}},
+meter('Venturimeter calibration','Qth = A1A2√(2gH)/√(A1² − A2²), d1 = 25 mm, d2 = 15 mm;  H = hm(Sm/Sw − 1);  Qa = AX/t (tank 0.25 m², X = 0.1 m);  Cd = Qa/Qth;  Qa = kH^m',.025,.015,.97,[.9,1]),
+meter('Orificemeter calibration','Qth = A1A2√(2gH)/√(A1² − A2²), d1 = 25 mm, d2 = 0.5·d1;  H = hm(Sm/Sw − 1);  Qa = AX/t (tank 0.25 m², X = 0.1 m);  Cd = Qa/Qth',.025,.0125,.62,[.55,.7]),
+{n:'Friction losses in pipes (Darcy f, Chezy C)',fx:'hf = hm(Sm/Sw − 1);  v = Qa/a, Qa = AX/t;  f = 2g·d·hf/(L v²);  i = hf/L;  C = v/√(m·i), m = d/4;  Re = ρvd/μ  (L = 2 m, d = 17 mm, μ = 7.82×10⁻⁴)',
+ P:[['V','Flow velocity (valve setting)',.5,3,1.5,.25,'m/s']],ti:1,
+ f(p){let V=p.V,d=.017,L=2,Q=V*AR(d),Re=1000*V*d/7.82e-4,fr=.316/Math.pow(Re,.25),hf=fr*L*V*V/(2*G*d),i=hf/L;return{o:[['Manometer hm',hf/.126,'cm Hg'],['Time for 10 cm rise',.025/Q,'s']],r:[['Head loss hf',hf,'m water'],['Discharge Qa',Q,'m³/s'],['Velocity v',V,'m/s'],['Darcy friction factor f',fr,''],['Hydraulic gradient i',i,''],['Chezy constant C',V/Math.sqrt(d/4*i),'m½/s'],['Reynolds number',Re,'']],k:3,ref:[.015,.045]}}},
+{n:'Rectangular notch calibration',fx:'Qth = (2/3)L√(2g)·H^(3/2), L = 10 cm;  H = h1 − h2 (sill h1 = 20 cm);  Qa = AX/t (0.25 m², X = 0.1 m);  Cd = Qa/Qth;  Qa = kH^m',
+ P:[['H','Head over sill H',2,10,6,.5,'cm']],ti:1,
+ f(p){let H=p.H/100,Qt=2/3*.1*Math.sqrt(2*G)*Math.pow(H,1.5),c=.64-.004*p.H,Qa=c*Qt;return{o:[['Hook gauge h2',20-p.H,'cm'],['Time for 10 cm rise',.025/Qa,'s']],r:[['Head H',H,'m'],['Theoretical discharge',Qt,'m³/s'],['Actual discharge',Qa,'m³/s'],['Cd',c,'']],k:3,ref:[.55,.7],cal:[p.H,Qa*1e6]}}},
+{n:'Pelton wheel turbine',fx:'H = Pi×10;  Q = Cd a1a2√(2gh)/√(a1²−a2²), h = hm(13.6−1), d1 = 65 mm, d2 = 39 mm, Cd = 0.9;  T = (W1−W2)g·R, R = 0.15 m;  Output = 2πNT/60000;  η = Output/(ρgQH/1000)',
+ P:[['N','Turbine speed',200,1400,800,100,'rpm']],
+ f(p){let N=p.N,T=Math.max(0,76.3*(1-N/1500)),Q=.011*(1-.00004*(N-800)),H=40,hm=H2h(Q,AR(.065),AR(.039),.9)/.126,Wl=T/(.15*G),In=G*Q*H,Out=2*Math.PI*N*T/6e4;return{o:[['Inlet pressure Pi',4,'kg/cm²'],['Manometer h1−h2',hm,'cm Hg'],['Speed N',N,'rpm'],['Tight side W1',Wl+2,'kg'],['Slack side W2',2,'kg']],r:[['Total head H',H,'m'],['Discharge Q',Q,'m³/s'],['Turbine input',In,'kW'],['Load W',Wl,'kg'],['Torque T',T,'N·m'],['Turbine output',Out,'kW'],['Efficiency',Out/In*100,'%']],k:6,ref:[40,80]}}},
+{n:'Francis turbine load test',fx:'H = (pi×10 + v²/2g) + po×13.6/1000;  v = Q/a1;  T = (m1−m2)g·r, r = 0.15 m;  OP = 2πNT/60 (W);  IP = ρgQH (W);  η = OP/IP.  Speed held at 1200 rpm',
+ P:[['m','Load on brake drum',1,18,10,1,'kg']],
+ f(p){let m=p.m,Q=.015+.0008*m,a1=AR(.1),v=Q/a1,H=12+v*v/(2*G)+150*.0136,OP=m*G*.15*2*Math.PI*1200/60,IP=1000*G*Q*H;return{o:[['Inlet pressure pi',1.2,'kg/cm²'],['Exit vacuum po',150,'mm Hg'],['Manometer h1−h2',H2h(Q,a1,AR(.06),.9)/.126,'cm Hg'],['Speed N',1200,'rpm'],['Tight side m1',m+2,'kg'],['Slack side m2',2,'kg']],r:[['Discharge Q',Q,'m³/s'],['Velocity v',v,'m/s'],['Total head H',H,'m'],['Input power IP',IP,'W'],['Output power OP',OP,'W'],['Efficiency',OP/IP*100,'%']],k:5,ref:[40,85]}}},
+{n:'Centrifugal pump performance',fx:'H = Pd×10 + Ps×13.6/1000 + X (X = 0.22 m);  Q = Ah/t1 (A = 0.166 m², h = 0.15 m);  Motor input = (3600/e)(n/t2) kW (e = 3200, n = 10);  Output = ρgQH/1000;  η = Output/Input',
+ P:[['Q','Delivery valve (discharge)',.2,1.4,1,.1,'L/s']],ti:2,
+ f(p){let Q=p.Q/1000,H=18-4*p.Q*p.Q,Ps=40+60*p.Q,Pd=(H-.22-Ps*.0136)/10,Pin=.28+.1*p.Q,Po=G*Q*H;return{o:[['Pressure Pd',Pd,'kg/cm²'],['Vacuum Ps',Ps,'mm Hg'],['t1, 15 cm rise',.166*.15/Q,'s'],['t2, 10 pulses',11.25/Pin,'s']],r:[['Total head H',H,'m'],['Discharge Q',Q,'m³/s'],['Motor input',Pin,'kW'],['Pump output',Po,'kW'],['Overall efficiency',Po/Pin*100,'%']],k:4,ref:[15,45]}}},
+{n:'Reciprocating pump performance',fx:'Qt = 2LAN/60 (L = 0.04 m, A = 0.0023758 m², N = 290 rpm);  Qa = Ah/t1 (A = 0.121 m²);  H = Pd×10 + Ps×13.6/1000 + 0.85;  Input = (3600/e)(n/t2);  η = ρgQaH/1000/Input;  Slip = (Qt − Qa)/Qt × 100',
+ P:[['Pd','Delivery pressure',.5,4.5,2,.5,'kg/cm²']],ti:2,
+ f(p){let Qt=2*.04*.0023758*290/60,s=.03+.012*p.Pd,Qa=Qt*(1-s),Ps=150+10*p.Pd,H=p.Pd*10+Ps*.0136+.85,Pin=.35+.115*p.Pd,Po=G*Qa*H;return{o:[['Pressure Pd',p.Pd,'kg/cm²'],['Vacuum Ps',Ps,'mm Hg'],['t1, 15 cm rise',.121*.15/Qa,'s'],['t2, 10 pulses',11.25/Pin,'s']],r:[['Total head H',H,'m'],['Actual discharge Qa',Qa,'m³/s'],['Theoretical discharge Qt',Qt,'m³/s'],['Motor input',Pin,'kW'],['Pump output',Po,'kW'],['Overall efficiency',Po/Pin*100,'%'],['Slip',s*100,'%']],k:5,ref:[20,60]}}},
+{n:'Impact of jet on vanes',fx:'H = Pd×10;  Q = Ah/t (tank 0.3 m × 0.3 m, h = 0.1 m);  V = Q/Anozzle (10 mm);  Ftheo = ρAV²/g (flat plate), ×(1 + cos60°) for 60° vane;  Factual = W·x/y (x = 0.2 m, y = 0.1 m)',
+ P:[['Pd','Supply pressure',.2,2,1,.2,'kg/cm²'],['v','0 = flat plate, 1 = 60° vane',0,1,0,1,'']],ti:2,
+ f(p){let H=p.Pd*10,An=AR(.01),Q=.95*An*Math.sqrt(2*G*H),V=Q/An,F=1000*An*V*V/G*(p.v?1.5:1),Fa=.9*F;return{o:[['Vane angle',p.v?60:90,'°'],['Pressure Pd',p.Pd,'kg/cm²'],['Time for 10 cm rise',.009/Q,'s'],['Displacement d',Fa*8,'mm'],['Balance reading W',Fa/2,'kg']],r:[['Discharge head H',H,'m'],['Discharge Q',Q,'m³/s'],['Velocity of jet V',V,'m/s'],['F theoretical',F,'kg'],['F actual',Fa,'kg'],['P theoretical',G*Q*H,'kW']],k:3,ref:[.1,5]}}}];
+
+/* ---------- Sample lab manual (pages split by form feed / --- line) ---------- */
+const SAMPLE=`Metacentric height and radius of gyration of a floating body. Aim: determine the metacentric height GM, plot GM against tilt angle θ and find the radius of gyration K. The metacentric height GM is the distance between the centre of gravity of a floating body and its metacentre; a larger positive GM means the body is more stable, and a negative GM means it is unstable.
+GM = wX/(W tanθ), where w is the added weight in N, X the distance the weight is moved in m, W the weight of the vessel plus the added weight in N, and θ the angle of heel. Weight of the vessel = ρ g V, with V = (h2 − h1) × tank area; the tank is 80 cm × 80 cm.
+Radius of gyration K = (T/2π)√(g GM), where T is the period of one oscillation, taken as the time for 10 oscillations divided by 10. Procedure: set the plumb line to zero, place the weight 200 g or 300 g on one side at distance X, note the tilt θL, move it to the other side and note θR; repeat for other distances, then release the tilted vessel and time 10 oscillations five times.
+---
+Calibration of a venturimeter. Aim: determine the coefficient of discharge Cd, find the calibration equation and draw the calibration curve. A venturimeter has a converging part, a throat and a diverging part; the velocity is maximum at the throat.
+Theoretical discharge Qth = A1 A2 √(2gH) / √(A1² − A2²). Head causing flow H = hm (Sm/Sw − 1) m of water, where hm = h1 − h2 is the difference of mercury levels and Sm/Sw = 13.6; so H is about 12.6 times hm. Actual discharge Qa = A X / t from the measuring tank. Cd = Qa/Qth, normally between 0.95 and 0.99, and less than 1 because of friction losses.
+Calibration: Qa = k H^m, so log Qa = log k + m log H; the slope of the straight line gives the index m and the intercept gives log k. A venturimeter has a smaller head loss than an orifice meter because its diffuser gives good pressure recovery.
+---
+Calibration of an orificemeter. An orifice meter is a plate with a hole placed concentrically in the pipe between flanges; the orifice diameter is 0.5 times the pipe diameter. The pressure tappings are about 1.5 to 2 pipe diameters upstream and 0.5 pipe diameter downstream.
+The equations are the same as for the venturimeter: Qth = A1 A2 √(2gH)/√(A1² − A2²), H = hm (Sm/Sw − 1), Qa = A X/t and Cd = Qa/Qth. The Cd of an orifice meter is about 0.6 to 0.65, lower than a venturimeter because of the vena contracta and the larger head loss.
+Calibration uses the regression equations Σy = m Σx + n c and Σxy = m Σx² + c Σx with x = log H and y = log Qa. Procedure: keep valves closed, start the pump, release air from the manometer, adjust the control valve and note hm and the time t for X cm rise in the tank.
+---
+Friction losses in pipes: Darcy friction factor and Chezy constant. Test pipe: length 2 m, diameter 17 mm, tank 50 cm × 50 cm, mercury manometer. Darcy–Weisbach equation hf = f L V²/(2 g d), so f = 2 g d hf/(L V²).
+Head loss hf = hm (Sm/Sw − 1) m of water. Velocity v = Qa/a with Qa = A X/t. Chezy's formula v = C √(m i), where i = hf/L is the hydraulic gradient and m = d/4 is the hydraulic mean depth. Reynolds number Re = ρ v d/μ with μ = 7.82 × 10⁻⁴ kg/m·s.
+Plot f against Re and C against Re. Flow is laminar below Re 2000, where f = 64/Re. Compare the friction factor with the Moody chart. Procedure: note the maximum manometer difference, divide it by seven to fix six steps, and record hm and time t at each setting.
+---
+Calibration of a rectangular notch. A notch is an opening in the side of a tank or channel through which fluid flows with its free surface below the top edge. The sheet of liquid is the nappe; the bottom edge is the crest or sill. Head causing flow H = h1 − h2, measured with a hook gauge above the sill level.
+Theoretical discharge Qth = (2/3) L √(2g) H^(3/2). Actual discharge Qa = A X/t. Cd = Qa/Qth, about 0.6 to 0.65 for a rectangular notch. Calibration equation Qa = k H^m, found by the graphical method or by regression using log Qa = log k + m log H.
+If the head over the notch doubles, the discharge increases by 2^1.5, about 2.8 times. Procedure: start the pump with the discharge valve closed, note the sill reading h1, maintain a steady head, measure the time for X cm rise in the measuring tank, and repeat for different heads.
+---
+Performance test on a Pelton wheel turbine. Rated supply head 40 m, discharge 660 LPM, rated speed 800 rpm, runner diameter 300 mm, 20 cups, brake drum diameter 300 mm (R = 0.15 m), rated output 4 HP. The Pelton wheel is an impulse turbine used for high head and low discharge, and the spear regulates the jet.
+Turbine input = ρ g Q H/1000 kW with H = Pi × 10 m of water (Pi in kg/cm²). Discharge Q = Cd a1 a2 √(2gh)/√(a1² − a2²) from a venturimeter with d1 = 65 mm, d2 = 39 mm and Cd = 0.9; h = (h1 − h2)(ρm/ρw − 1).
+Turbine output = 2 π N T/60000 kW with torque T = (W1 − W2) g R from the rope brake. Efficiency = output/input × 100. Maximum load is calculated from the rated output 4 × 746 W at 800 rpm. Plot efficiency, output power and discharge against speed and read the economic speed from the graph.
+---
+Load test on a Francis turbine. Rated head 1.2 kg/cm², discharge 2000 LPM, rated speed 1200 rpm, runner diameter 180 mm, 8 guide vanes, brake drum 300 mm, rated output 4.5 hp. The Francis turbine is a reaction turbine; the pressure at the runner exit is below atmospheric and the draft tube regains kinetic energy.
+Total head H = inlet head + exit head, where the inlet head = pi × 10 + v²/2g and the exit head = po × 13.6/1000 for a vacuum gauge reading po in mm of Hg. Input power IP = ρ g Q H in W; output power OP = 2 π N T/60 in W; efficiency = OP/IP.
+Procedure: start with the belt loose and the guide vanes fully open, open the gate valve until the turbine runs at 1200 rpm, record readings, then load the brake drum and open the gate valve again to restore 1200 rpm for each load, with at least six readings. Regulate cooling water into the brake drum.
+---
+Performance of a centrifugal pump. Single-stage pump 0.37 kW, head 14 m, discharge 1 LPS, measuring tank area 0.166 m², energy meter constant 3200 imp/kWh. Total head H = Pd × 10 + Ps × 13.6/1000 + X, where Pd is the delivery pressure in kg/cm², Ps the suction vacuum in mm of Hg and X = 0.22 m is the gauge height difference.
+Motor input = (3600/e)(n/t2) kW, where n = 10 pulses and t2 is the time for n pulses. Discharge Q = A h/t1 with h = 0.15 m. Pump output = ρ g Q H/1000 kW and overall efficiency = pump output/motor input × 100.
+Plot discharge against motor input, head and efficiency. Procedure: open the suction valve, close the delivery gate valve, start the pump, then open the delivery valve in steps and record Pd, Ps, t1 and t2 for five or six discharges at constant speed. At the end leave the delivery valve open and switch off the pump before the power supply.
+---
+Performance of a reciprocating pump. Double-acting single-cylinder pump, 0.75 kW, 290 rpm, stroke L = 0.04 m, cylinder area A = 0.0023758 m², measuring tank area 0.121 m², energy meter 3200 imp/kWh, gauge height difference X = 0.85 m.
+Theoretical discharge Qt = 2 L A N/60. Actual discharge Qa = A h/t1. Slip S = (Qt − Qa)/Qt × 100 %; slip arises from leakage past the piston and valves. Overall efficiency = pump output/motor input × 100, with output = ρ g Qa H/1000 and input = (3600/e)(n/t2).
+Plot discharge, efficiency and input power against head. Procedure: open the suction and delivery valves, switch on the pump, set the delivery valve for different discharges at constant speed, and record Pd, Ps, t1 for 15 cm rise and t2 for 10 pulses. The delivery gate valve must not be fully closed when the experiment ends.
+---
+Impact of jet on vanes. Nozzle diameter 10 mm, supply pipe 25 mm, collecting tank 30 cm × 30 cm, counter weight 0.397 kg, vanes: flat plate (90°) and 60° vane. This experiment explains the principle of an impulse turbine such as the Pelton wheel, where the change of momentum of the jet is imparted to the vane as impulse force.
+Discharge Q = A h/t. Velocity of jet V = Q/Anozzle. Theoretical force for a flat plate Ftheoretical = ρ A V²/g (kg); for a 60° vane Ftheoretical = ρ A V²(1 + cosθ)/g. Actual force Factual = W x/y, where W is the balance reading and x and y are the lever arm distances. Hydraulic power = ρ g Q H/1000 with H = Pd × 10.
+Procedure: install the flat plate, balance the lever at no load with the counter weight, start the pump, admit water through the nozzle, record pressure, time for 10 cm rise, displacement and balance reading for at least six discharges, then repeat for the 60° vane. If the jet velocity increases the force increases roughly with the square of the velocity.
+---
+Course 102006/ME422S Fluid Mechanics and Hydraulic Machines Lab, 0-0-3, 2 credits. A minimum of 10 experiments must be performed. Assessment: 150 marks. Continuous Internal Evaluation 75 marks (attendance 15, continuous assessment 30, internal test 30) including viva voce on each practical session, and End Semester Examination 75 marks. Pass minimum 40 percent in the ESE and 50 percent overall. Minimum 75 percent attendance is mandatory to register for the ESE. The certified record must be submitted for the ESE.
+Course outcomes: CO1 determine the coefficient of discharge of flow measuring devices and calibrate them; CO2 determine losses in pipes; CO3 determine metacentric height and stability of floating bodies; CO4 determine efficiency and characteristic curves of turbines; CO5 determine efficiency and characteristic curves of pumps; CO6 determine the force acting on vanes.`;
+const ensureDocs=()=>{if(!DB.docs)DB.docs=[{name:'ME422S_Lab_Manual.txt',pages:SAMPLE.split(/\f|\n-{3,}\n/)}]};ensureDocs();
+
+/* ---------- Retrieval ---------- */
+const STOP=new Set('the a an of to in and is are my me too so at for how why what does do did can i it this that with on or be by as explain tell give show about please'.split(' '));
+const tok=s=>[...new Set((s.toLowerCase().match(/[a-z0-9]+/g)||[]).filter(w=>!STOP.has(w)&&w.length>1).map(w=>w.replace(/(ing|es|s)$/,'')))];
+function chunks(){let o=[];DB.docs.forEach(d=>d.pages.forEach((p,i)=>p.split(/\n+/).filter(x=>x.trim()).forEach(t=>o.push({d:d.name,pg:i+1,t,k:new Set(tok(t))}))));return o}
+function retrieve(q){let T=tok(q),C=chunks().map(c=>({...c,s:T.filter(w=>c.k.has(w)).length})).sort((a,b)=>b.s-a.s).slice(0,3).filter(c=>c.s>0),u=new Set;C.forEach(c=>T.forEach(w=>c.k.has(w)&&u.add(w)));return{C,cov:T.length?u.size/T.length:0,T,u:[...u]}}
+const fmtSrc=c=>`<div class="src"><b>${esc(c.d)}, page ${c.pg}</b><br>“${esc(c.t.length>200?c.t.slice(0,200)+'…':c.t)}”</div>`;
+
+/* ---------- Quiz bank ---------- */
+if(!DB.qs){const Q=(q,o,a,t,ref,e)=>({q,o,a,t,ref,e,st:'ok'});DB.qs=[Q('The metacentric height of a floating body is the distance between',['Centre of buoyancy and water surface', 'Centre of gravity and metacentre', 'Centre of buoyancy and bottom', 'Metacentre and tank base'],1,'Metacentric height','Exp 1 p.2','GM is the distance between the centre of gravity G and the metacentre M.'),
+Q('A floating body becomes more stable when',['GM decreases', 'GM becomes negative', 'GM increases', 'GM becomes zero'],2,'Metacentric height','Exp 1 p.2','A larger positive GM gives a larger restoring moment.'),
+Q('A 2 N weight is moved 5 cm; total weight 100 N; tilt 5°. GM is closest to',['0.011 m', '0.021 m', '0.051 m', '0.12 m'],0,'Metacentric height','Exp 1','GM = wX/(W tanθ) = 2×0.05/(100×tan5°) = 0.0114 m.'),
+Q('In a venturimeter the velocity is maximum at the',['inlet', 'throat', 'outlet', 'diffuser end'],1,'Flow meters','Exp 2 p.1','The area is smallest at the throat, so velocity is highest there.'),
+Q('Venturimeter: actual discharge 0.0018 m³/s, theoretical 0.002 m³/s. Cd is',['0.75', '0.80', '0.90', '1.05'],2,'Coefficient of discharge','Exp 2','Cd = Qa/Qth = 0.0018/0.002 = 0.90.'),
+Q('A mercury manometer difference hm is converted to head of water using',['H = hm', 'H = hm × (Sm/Sw − 1)', 'H = hm × Sm', 'H = hm / Sm'],1,'Manometer head conversion','Exp 2 p.5','H = hm(Sm/Sw − 1), about 12.6 × hm. Skipping this is the most common error.'),
+Q('Water rises 2 cm in 10 s in a 0.5 m² tank. The discharge is',['0.0005 m³/s', '0.001 m³/s', '0.002 m³/s', '0.005 m³/s'],1,'Coefficient of discharge','Exp 2','Qa = AX/t = 0.5×0.02/10 = 0.001 m³/s.'),
+Q('Pipe 20 m long, 0.1 m diameter, V = 2 m/s, f = 0.02. The head loss is closest to',['0.4 m', '0.8 m', '1.6 m', '3.2 m'],1,'Pipe friction','Exp 4','hf = fLV²/(2gd) = 0.02×20×4/(2×9.81×0.1) = 0.82 m.'),
+Q('If the head over a rectangular notch doubles, the discharge',['doubles', 'increases four times', 'increases more than double', 'stays constant'],2,'Notch','Exp 5','Q ∝ H^1.5, so doubling H multiplies Q by about 2.83.'),
+Q('A pump delivers 0.02 m³/s against 20 m head. Hydraulic power is closest to',['2 kW', '3.9 kW', '5.5 kW', '7.8 kW'],1,'Pump efficiency','Exp 8','P = ρgQH/1000 = 9.81×0.02×20 = 3.92 kW.'),
+Q('Pump input is 6 kW and hydraulic output is 4.5 kW. The efficiency is',['60 %', '70 %', '75 %', '90 %'],2,'Pump efficiency','Exp 8','η = 4.5/6 = 75 %.'),
+Q('A water jet at 15 m/s (area 0.004 m²) hits a stationary flat plate normal to it. The force is',['450 N', '600 N', '900 N', '1200 N'],2,'Impact of jet','Exp 10','F = ρAV² = 1000×0.004×225 = 900 N.'),
+Q('A Pelton wheel is used mainly for',['low head', 'medium head', 'high head', 'uniform pressure flow'],2,'Turbines','Exp 6','Pelton is an impulse turbine for high head and low discharge.')]}
+const qsOK=()=>DB.qs.filter(x=>x.st=='ok');
+
+/* ---------- Viva rubric (faculty-defined) ---------- */
+const VIVA=[
+{q:'Why is the coefficient of discharge of a venturimeter less than 1?',pts:[[/friction|viscous|loss|boundary/,'Friction/viscous losses between inlet and throat'],[/actual.*(less|lower|smaller)|less than theoretical|theoretical.*(more|higher|greater|ideal)/,'Actual discharge is less than the theoretical (ideal) discharge'],[/contraction|vena|velocity profile|non.?uniform|turbulen/,'Flow contraction and non-uniform velocity profile also reduce discharge']]},
+{q:'How do you convert a mercury manometer reading into head of water?',pts:[[/sm|13\.6|specific gravity|density/,'Use the specific gravity of mercury (13.6) and of water'],[/sm\s*\/\s*sw|minus 1|- ?1\)|12\.6/,'H = hm (Sm/Sw − 1), about 12.6 × hm'],[/hm|difference|h1.*h2|levels/,'hm is the difference of mercury levels h1 − h2']]},
+{q:'What does a larger metacentric height indicate?',pts:[[/stab/,'The floating body is more stable'],[/positive|above|restor|righting/,'GM must be positive; a restoring moment acts when it heels'],[/wx|tan|heel|tilt|angle/,'GM = wX/(W tanθ) is found from the heel caused by a shifted weight']]},
+{q:'What is slip in a reciprocating pump?',pts:[[/theoretical|qt/,'Slip = (Qt − Qa)/Qt × 100 compares theoretical and actual discharge'],[/leak|valve|delay|lost/,'It is caused by leakage past the piston/valves and delayed valve closing'],[/actual.*less|qa.*less|less than/,'Actual discharge is less than theoretical, so slip is positive']]}];
+
+/* ---------- Navigation ---------- */
+const TABS=[['home','Home'],['course','Course Content'],['lab','Virtual Lab'],['chat','Lab Chatbot'],['quiz','MCQ Quiz'],['dash','Dashboard'],['mat','Lab Materials']];
+function go(t){if(!USER)t='login';S.tab=t;$('#nav').innerHTML=!USER?'':TABS.map(([k,l])=>`<button class="${k==t?'on':''}" onclick="go('${k}')">${l}</button>`).join('');$('#v').innerHTML=({login:vLogin,home:vHome,course:vCourse,lab:vLab,chat:vChat,quiz:vQuiz,dash:vDash,mat:vMat})[t]();if(t=='lab')initLab();if(t!='dash')S.pl=0;else if(!S.pl&&USER&&USER.role=='faculty'&&BACKEND.shared){S.pl=1;pullSubs()}if(t=='chat')chatScroll()}
+
+/* ---------- Virtual Lab ---------- */
+function setEx(i){S.ex=i;S.p={};E[i].P.forEach(x=>S.p[x[0]]=x[4]);S.rows=[];S.cal=[];go('lab')}
+function vLab(){let e=E[S.ex];return`<div class="card"><h2>Experiments · 102006/ME422S Fluid Mechanics &amp; Hydraulic Machines Lab</h2><div class="ex">${E.map((x,i)=>`<button class="${i==S.ex?'on':''}" onclick="setEx(${i})">${i+1}. ${x.n}</button>`).join('')}</div></div>
+<div class="g2"><div class="card"><h2>${S.ex+1}. ${e.n}</h2><div class="mu" style="font-family:'IBM Plex Mono',monospace;font-size:12px">${e.fx}</div><div id="sl">${e.P.map(x=>`<div class="sl"><label>${x[1]}</label><input type="range" min="${x[2]}" max="${x[3]}" step="${x[5]}" value="${S.p[x[0]]}" oninput="S.p['${x[0]}']=+this.value;upd()"><output id="o_${x[0]}">${S.p[x[0]]} ${x[6]}</output></div>`).join('')}</div>
+<button class="btn" onclick="rec()">Record observation</button> <button class="btn alt" onclick="S.rows=[];S.cal=[];upd()">Clear</button></div>
+<div class="card"><h2>Live setup</h2><div id="rig">${RIGS[S.ex]}</div><div class="rd" id="rd"></div></div></div>
+<div class="g2"><div class="card"><h2>Observation table</h2><div class="sc" id="tb"></div></div>
+<div class="card"><h2>Result and calculation check</h2><p class="mu">Calculate <b>${e.f(S.p).r[e.f(S.p).k][0]}</b> from your recorded row and enter it:</p><input type="number" step="any" id="ans" placeholder="your value"><p><button class="btn" onclick="chk()">Check my value</button></p><div id="ck"></div>${e.f(S.p).cal?'<p><button class="btn alt" onclick="fit()">Fit Qa = kH^m from my recorded rows</button></p><div id="ft"></div>':''}</div></div>`}
+let rafId;
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x)),A=(i,k,v)=>{let e=$('#'+i);e&&e.setAttribute(k,v)},D=(s,t)=>document.querySelectorAll(s).forEach(e=>e.style.animationDuration=t+'s'),TX=(i,t)=>{let e=$('#'+i);e&&(e.textContent=t)},TH=f=>{let h=110*clamp(f);A('th','y',140-h);A('th','height',h)};
+const T=(x,y,t,id)=>`<text x="${x}" y="${y}"${id?` id="${id}"`:''}>${t}</text>`,SV=(l,b)=>`<svg viewBox="0 0 360 170" width="100%" role="img" aria-label="${l}">${b}</svg>`,THM=x=>`<rect class="k" x="${x}" y="30" width="12" height="110"/><rect id="th" class="a" x="${x+1}" y="140" width="10" height="0"/>`;
+const TANK=x=>`<rect class="k" x="${x}" y="20" width="50" height="110"/><rect id="bl" data-up="1" class="a" x="${x+2}" y="22" width="46" height="106" opacity=".7"/>`+T(x-4,14,'Measuring tank');
+const MAN=(x,g)=>`<rect class="k" x="${x}" y="95" width="10" height="70"/><rect class="k" x="${x+g}" y="95" width="10" height="70"/><rect class="k" x="${x}" y="155" width="${g+10}" height="10"/><rect x="${x+1}" y="156" width="${g+8}" height="8" fill="var(--mu)" opacity=".6"/><rect id="ml" x="${x+1}" y="140" width="8" height="16" fill="var(--mu)" opacity=".6"/><rect id="mr" x="${x+g+1}" y="140" width="8" height="16" fill="var(--mu)" opacity=".6"/><path class="k" stroke-dasharray="3 2" d="M${x+5} 80V95M${x+g+5} 80V95"/>`+T(x+g+16,130,'Hg manometer');
+const FLW=`<path class="fl" stroke="var(--ac)" stroke-width="3" d="M12 60H268"/>`,PIPE=`<path class="k" d="M10 40H270M10 80H270"/>`;
+const FL=d=>`<path class="fl" stroke="var(--ac)" stroke-width="3" d="${d}"/>`;
+const DR=`<circle class="k" cx="270" cy="85" r="22"/><path class="k" d="M248 85V140M292 85V140"/><rect id="w1" class="a" x="240" y="140" width="16" height="10"/><rect id="w2" class="a" x="284" y="140" width="16" height="10"/>`+T(236,162,'W1 tight      W2 slack');
+const BKT=[0,1,2,3,4,5,6,7].map(i=>`<circle class="a" cx="${150+32*Math.cos(i*Math.PI/4)}" cy="${85+32*Math.sin(i*Math.PI/4)}" r="5"/>`).join('');
+const MTR=`<g id="em" class="spin"><circle class="k" cx="250" cy="135" r="10"/><path class="a" d="M250 125V135"/></g>`+T(226,160,'Energy meter')+`<circle class="k" cx="225" cy="85" r="12"/><line id="nd" x1="225" y1="85" x2="225" y2="76" stroke="var(--bad)" stroke-width="2"/>`+T(206,66,'Pressure gauge');
+const SUMP=`<rect class="o" x="10" y="100" width="60" height="50"/><rect x="12" y="112" width="56" height="36" fill="var(--ac)" opacity=".3"/>`+T(14,164,'Sump');
+const RIGS=[
+SV('Metacentric height rig',`<rect class="o" x="40" y="100" width="280" height="60"/><rect x="42" y="112" width="276" height="46" fill="var(--ac)" opacity=".3"/><g class="rk"><g id="ves"><rect class="k" x="130" y="80" width="100" height="36"/><path class="k" d="M180 80V40"/><rect id="wg" class="a" x="202" y="70" width="16" height="10"/><path class="k" d="M180 40V76"/><circle class="a" cx="180" cy="78" r="3"/></g></g>`+T(44,94,'Tank 80 cm × 80 cm')+T(236,60,'Weight w moved by X')+T(250,150,'Floating vessel + plumb line')),
+SV('Venturimeter rig',`<path class="k" d="M10 40H80L115 52H140L185 40H270M10 80H80L115 68H140L185 80H270"/>`+FLW+MAN(75,45)+TANK(290)+T(10,30,'Venturimeter')),
+SV('Orificemeter rig',PIPE+`<rect class="a" x="120" y="40" width="6" height="12"/><rect class="a" x="120" y="68" width="6" height="12"/>`+FLW+MAN(75,65)+TANK(290)+T(10,30,'Orifice plate')),
+SV('Pipe friction rig',PIPE+FLW+MAN(35,200)+TANK(290)+T(10,30,'Test pipe L = 2 m, d = 17 mm')),
+SV('Rectangular notch rig',`<rect class="k" x="20" y="60" width="150" height="70"/><rect id="wl" x="22" y="90" width="146" height="40" fill="var(--ac)" opacity=".3"/><rect class="a" x="170" y="60" width="6" height="52"/>`+FL('M176 113Q210 113 212 158')+`<path class="k" d="M100 40V90"/><circle id="hk" class="a" cx="100" cy="90" r="4"/>`+TANK(290)+T(20,54,'Channel')+T(150,50,'Notch plate')+T(60,36,'Hook gauge')),
+SV('Pelton wheel rig',`<g id="pw" class="spin"><circle class="k" cx="150" cy="85" r="32"/>${BKT}</g><path class="a" d="M20 121L90 117V125z"/>`+FL('M90 121H140')+`<path class="k" d="M182 85H248"/>`+DR+T(20,110,'Nozzle + spear')+T(110,40,'Runner with 20 cups')),
+SV('Francis turbine rig',`<circle class="o" cx="150" cy="80" r="46"/><g id="pw" class="spin"><circle class="k" cx="150" cy="80" r="22"/><path class="k" d="M150 58V102M128 80H172M134 64L166 96M166 64L134 96"/></g><path class="k" d="M145 126L135 160M155 126L165 160M182 80H248"/>`+FL('M10 60H104')+DR+T(10,50,'Inlet')+T(100,164,'Draft tube')+T(100,28,'Spiral casing + runner')),
+SV('Centrifugal pump rig',SUMP+FL('M40 125H100')+`<circle class="k" cx="118" cy="125" r="20"/><g id="ip" class="spin"><path class="k" d="M118 108V142M101 125H135"/></g>`+FL('M138 125H200V50H315')+`<circle class="k" cx="85" cy="95" r="12"/><line id="nv" x1="85" y1="95" x2="85" y2="86" stroke="var(--bad)" stroke-width="2"/>`+TANK(290)+MTR+T(60,78,'Vacuum gauge')+T(98,160,'Pump')),
+SV('Reciprocating pump rig',SUMP+FL('M40 125H100')+`<rect class="k" x="100" y="70" width="50" height="80"/><g id="pis" class="osc"><rect class="a" x="102" y="72" width="46" height="10"/><rect class="a" x="122" y="50" width="6" height="22"/></g>`+FL('M150 110H200V50H315')+TANK(290)+MTR+T(96,164,'Cylinder + piston')),
+SV('Impact of jet rig',`<path class="k" d="M160 160V130H190V160"/><path class="a" d="M165 130L175 122L185 130z"/><path id="jt" class="fl" stroke="var(--ac)" stroke-width="4" d="M175 120V72"/><rect id="vf" class="a" x="150" y="64" width="50" height="5"/><path id="v6" d="M150 62Q175 84 200 62" fill="none" stroke="var(--am)" stroke-width="4" opacity="0"/><path class="k" d="M100 62H250"/><path class="k" d="M235 62L228 76H242z"/><rect id="wb" class="a" x="242" y="70" width="16" height="10"/><rect class="a" x="96" y="56" width="14" height="12"/>`+TANK(290)+T(60,46,'Counter weight')+T(130,150,'Nozzle')+T(214,50,'Balance'))];
+const rigUpd=[
+(p,R)=>{A('ves','transform',`rotate(${R.o[3][1]*5} 180 95)`);A('wg','x',180+p.X*5-8);D('.rk',R.o[4][1]/10)},
+(p,R)=>MU(R.o[0][1],R.r[2][1]),(p,R)=>MU(R.o[0][1],R.r[2][1]),(p,R)=>MU(R.o[0][1],R.r[1][1]),
+(p,R)=>{let y=112-3.5*p.H;A('wl','y',y);A('wl','height',130-y);A('hk','cy',y);D('.fl',.6)},
+(p,R)=>{D('#pw',1200/p.N);A('w1','height',clamp(6+R.o[3][1]*1.2,6,60));A('w2','height',9)},
+(p,R)=>{D('#pw',1);A('w1','height',clamp(6+R.o[4][1]*1.2,6,60));A('w2','height',9)},
+(p,R)=>{D('#ip',.5);A('nd','transform',`rotate(${-60+R.o[0][1]*60} 225 85)`);A('nv','transform',`rotate(${-60+R.o[1][1]*.6} 85 95)`);D('#em',R.o[3][1]/2)},
+(p,R)=>{D('#pis',.8);A('nd','transform',`rotate(${-60+p.Pd*25} 225 85)`);D('#em',R.o[3][1]/2)},
+(p,R)=>{A('vf','opacity',p.v?0:1);A('v6','opacity',p.v?1:0);D('#jt',6/R.r[2][1]);A('wb','height',clamp(6+R.o[4][1]*40,6,50))}];
+const MU=(hm,Qa)=>{let d=clamp(hm/20)*14;A('ml','y',140+d);A('ml','height',16-d);A('mr','y',140-d);A('mr','height',16+d);D('.fl',Math.max(.25,5e-4/Qa))};
+function initLab(){upd();burette()}
+function upd(){let e=E[S.ex],R=e.f(S.p);e.P.forEach(x=>{let o=$('#o_'+x[0]);if(o)o.textContent=S.p[x[0]]+' '+x[6]});
+$('#rd').innerHTML=R.o.map(x=>`<div><span>${x[0]}</span><b>${n3(x[1])}</b><span>${x[2]}</span></div>`).join('');
+$('#tb').innerHTML=S.rows.length?`<table><tr><th>#</th>${R.o.map(x=>`<th>${x[0]} (${x[2]})</th>`).join('')}</tr>${S.rows.map((r,i)=>`<tr><td>${i+1}</td>${r.map(v=>`<td>${n3(v)}</td>`).join('')}</tr>`).join('')}</table>`:'<p class="mu">No rows yet. Set parameters and record an observation.</p>';
+rigUpd[S.ex](S.p,R)}
+function burette(){cancelAnimationFrame(rafId);let b=$('#bl');if(!b)return;let y0=+b.getAttribute('y'),h0=+b.getAttribute('height'),up=b.dataset.up,t0=performance.now();(function f(n){let b=$('#bl');if(!b)return;let o=E[S.ex].f(S.p).o,t=Math.max(1500,o[E[S.ex].ti][1]*1000/8),k=((n-t0)%t)/t,h=up?h0*k:h0*(1-k);b.setAttribute('y',up?y0+h0-h:y0+h0*k);b.setAttribute('height',h);rafId=requestAnimationFrame(f)})(t0)}
+function rec(){let R=E[S.ex].f(S.p);S.rows.push(R.o.map(x=>x[1]));(S.cal=S.cal||[]).push(R.cal);upd()}
+function fit(){let c=(S.cal||[]).filter(Boolean);if(c.length<3){$('#ft').innerHTML='<p class="bad">Record at least 3 observations at different flow rates first.</p>';return}let x=c.map(a=>Math.log(a[0])),y=c.map(a=>Math.log(a[1])),n=c.length,sx=x.reduce((a,b)=>a+b),sy=y.reduce((a,b)=>a+b),sxy=x.reduce((a,b,i)=>a+b*y[i],0),sxx=x.reduce((a,b)=>a+b*b,0),m=(n*sxy-sx*sy)/(n*sxx-sx*sx),cc=(sy-m*sx)/n;$('#ft').innerHTML=`<p>Regression: <b>m = ${n3(m)}</b>, <b>k = ${n3(Math.exp(cc))}</b>, so Qa = ${n3(Math.exp(cc))}·H<sup>${n3(m)}</sup> (H in cm of water, Qa in cm³/s). Expected index is about 0.5 for meters and 1.5 for the notch.</p>`}
+function chk(){let e=E[S.ex],R=e.f(S.p),k=R.r[R.k],v=parseFloat($('#ans').value);if(isNaN(v)){$('#ck').innerHTML='<p class="bad">Enter a number first.</p>';return}
+let d=Math.abs(v-k[1])/Math.abs(k[1]),ok=d<=.05,inr=v>=R.ref[0]&&v<=R.ref[1],err='',q=v/k[1];
+if(!ok){err=[[3.55,'Manometer head not converted to water head'],[1/3.55,'Manometer head not converted to water head'],[100,'cm/m unit mix-up'],[.01,'cm/m unit mix-up'],[1000,'L/s vs m³/s mix-up'],[.001,'L/s vs m³/s mix-up'],[9.81,'Missed g (kg vs N)'],[1/9.81,'Missed g (kg vs N)']].find(a=>Math.abs(q/a[0]-1)<.06);err=err?err[1]:'Calculation mismatch'}
+DB.sim.push({ex:E[S.ex].n,ok,err});save();
+$('#ck').innerHTML=`<p class="${ok?'ok':'bad'}"><b>${ok?'Correct':'Not within 5% of the simulation value'}</b>${ok?'':' — '+err+'. Re-check units, the manometer conversion and cm/m units, then try again.'}</p>
+<p class="mu">Expected ${k[0]}: ${n3(k[1])} ${k[2]} (tolerance ±5%). Typical band: ${n3(R.ref[0])}–${n3(R.ref[1])} ${k[2]} — your value is ${inr?'inside':'outside'} it.</p>
+<details><summary>Show all calculated results</summary><table>${R.r.map(x=>`<tr><td>${x[0]}</td><td>${n3(x[1])} ${x[2]}</td></tr>`).join('')}</table></details>`}
+
+/* ---------- Chatbot ---------- */
+const chatScroll=()=>{let c=$('#cl');if(c)c.scrollTop=c.scrollHeight};
+function vChat(){return`<div class="card"><h2>Lab Chatbot</h2><p class="mu">Answers come only from the uploaded Lab Materials. Tutor mode gives a hint first; Evaluator mode runs a viva scored against a faculty rubric. Final marks stay with faculty.</p>
+<div class="ex"><button class="${S.mode=='tutor'?'on':''}" onclick="S.mode='tutor';go('chat')">Tutor mode</button><button class="${S.mode=='eval'?'on':''}" onclick="S.mode='eval';startViva()">Evaluator mode (viva)</button></div>
+<div id="cl" style="max-height:52vh;overflow:auto;margin-top:8px">${S.chat.length?S.chat.map(m=>`<div class="msg ${m.r}">${m.h}</div>`).join(''):'<p class="mu">Try: “Why is my Cd for the venturimeter less than 1, and how do I convert the manometer head?” or ask something outside the manual, such as “How do I derive the efficiency of a Rankine cycle?”</p>'}</div>
+<div style="display:flex;gap:8px;margin-top:8px"><input type="text" id="qi" placeholder="${S.mode=='eval'?'Type your viva answer…':'Ask about theory, procedure or safety…'}" onkeydown="if(event.key=='Enter')send()"><button class="btn" onclick="send()">Send</button></div></div>`}
+function push(r,h){S.chat.push({r,h});go('chat')}
+let REV=[];
+function send(){let q=$('#qi').value.trim();if(!q)return;push('u',esc(q));if(S.mode=='eval'&&S.viva)return vivaAns(q);
+let R=retrieve(q);if(R.cov<.6||!R.C.length){return push('b','The uploaded lab materials do not provide sufficient information to answer this. Please ask your instructor, or ask faculty to upload material that covers it.')}
+let hint=/head|manometer|hm/.test(q.toLowerCase())?'Hint: check whether you converted the mercury reading to a head of water, H = hm(Sm/Sw − 1), and whether your units (cm to m) are consistent.':`Hint: re-read the passage on ${R.u.slice(0,3).join(', ')} (${R.C[0].d}, page ${R.C[0].pg}) and try to state the answer in your own words first.`;
+REV.push(R.C.map(c=>`<b>Explanation from the manual:</b> ${esc(c.t)}`).join('\n\n')+R.C.map(fmtSrc).join(''));
+push('b',`${hint}<div style="margin-top:8px"><button class="btn alt" onclick="reveal(${REV.length-1})">Reveal explanation</button></div>`)}
+function reveal(i){S.chat.push({r:'b',h:REV[i]});go('chat')}
+function startViva(){S.viva={i:0,sc:[],miss:[]};S.chat.push({r:'b',h:`Viva started. ${VIVA.length} questions, each scored out of 5 against the faculty rubric.\n\n<b>Q1.</b> ${VIVA[0].q}`});go('chat')}
+function vivaAns(a){let V=S.viva,Q=VIVA[V.i],al=a.toLowerCase(),hit=Q.pts.filter(p=>p[0].test(al)),sc=Math.round(5*hit.length/Q.pts.length),miss=Q.pts.filter(p=>!hit.includes(p)).map(p=>p[1]);V.sc.push(sc);V.miss.push(...miss);
+let h=`<b>Score: ${sc}/5.</b> ${miss.length?'Missing points:\n• '+miss.join('\n• '):'All rubric points covered.'}`;V.i++;
+if(V.i<VIVA.length)h+=`\n\n<b>Q${V.i+1}.</b> ${VIVA[V.i].q}`;else{let t=V.sc.reduce((a,b)=>a+b,0);h+=`\n\n<b>Viva complete: ${t}/${VIVA.length*5}.</b> Saved to the dashboard for faculty review.`;DB.viva.push({sc:+(t/VIVA.length).toFixed(1),miss:V.miss});save();S.viva=null;S.mode='tutor'}
+S.chat.push({r:'b',h});go('chat')}
+
+/* ---------- Quiz ---------- */
+function vQuiz(){let o=`<div class="card"><h2>Pre-lab MCQ quiz</h2>`;
+if(!S.qz)o+=`<p class="mu">${qsOK().length} faculty-approved questions across the 10 experiments (metacentric height, flow meters, pipe friction, notch, pumps, turbines, impact of jet). Scored instantly with explanations.</p><button class="btn" onclick="S.qz={i:0,sc:0,w:[],done:false,pick:null};go('quiz')">Start quiz</button>`;
+else if(S.qz.done)o+=`<h2>Score: ${S.qz.sc}/${qsOK().length}</h2>${S.qz.log.map(x=>`<p class="${x.ok?'ok':'bad'}"><b>${x.ok?'Correct':'Incorrect'}:</b> ${x.q}<br><span class="mu">${x.e} (${x.ref})</span></p>`).join('')}<button class="btn" onclick="S.qz=null;go('quiz')">Try again</button>`;
+else{let Q=qsOK()[S.qz.i],p=S.qz.pick;o+=`<p class="mu">Question ${S.qz.i+1} of ${qsOK().length}</p><p><b>${Q.q}</b></p>${Q.o.map((x,i)=>`<button class="opt ${p!=null?(i==Q.a?'ok':i==p?'bad':''):''}" ${p!=null?'disabled':''} onclick="ans(${i})">${x}</button>`).join('')}${p!=null?`<p class="mu">${Q.e} (${Q.ref})</p><button class="btn" onclick="nextQ()">${S.qz.i+1<qsOK().length?'Next question':'See score'}</button>`:''}`}
+o+='</div>';
+if(S.role=='faculty')o+=`<div class="card"><h2>Faculty: generate and review MCQs</h2><p class="mu">Drafts are created from the uploaded materials. Nothing reaches students until you approve it.</p><button class="btn alt" onclick="gen()">Generate 3 draft MCQs</button>${DB.qs.map((x,i)=>`<p><b>${x.q}</b> <span class="mu">[${x.st=='ok'?'approved':'draft'}]</span><br><span class="mu">Key: ${x.o[x.a]} · ${x.ref}</span> ${x.st=='ok'?'':`<button class="btn alt" onclick="DB.qs[${i}].st='ok';save();go('quiz')">Approve</button>`} <button class="btn alt" onclick="DB.qs.splice(${i},1);save();go('quiz')">Delete</button></p>`).join('')}</div>`;return o}
+function ans(i){let Q=qsOK()[S.qz.i];S.qz.pick=i;S.qz.log=S.qz.log||[];S.qz.log.push({ok:i==Q.a,q:Q.q,e:Q.e,ref:Q.ref});if(i==Q.a)S.qz.sc++;else S.qz.w.push(Q.t);go('quiz')}
+function nextQ(){let z=S.qz;z.pick=null;if(++z.i>=qsOK().length){z.done=true;DB.quiz.push({sc:z.sc,n:qsOK().length,w:z.w});save()}go('quiz')}
+function gen(){let all=chunks(),words=[...new Set(all.flatMap(c=>c.t.match(/[A-Za-z]{8,}/g)||[]).map(w=>w.toLowerCase()))],made=0;
+for(const c of all.sort(()=>Math.random()-.5)){if(made>=3)break;let s=(c.t.match(/[^.]+\./g)||[]).find(x=>/ is | are | = |remains|kept/.test(x)&&x.length>50&&x.length<190),w=s&&(s.match(/[A-Za-z]{8,}/g)||[])[0];if(!w||DB.qs.some(q=>q.q.includes(s.slice(0,30))))continue;
+let d=words.filter(x=>x!=w.toLowerCase()).sort(()=>Math.random()-.5).slice(0,3),o=[w.toLowerCase(),...d].sort(()=>Math.random()-.5);
+DB.qs.push({q:'Fill in the blank: '+s.trim().replace(w,'_____'),o,a:o.indexOf(w.toLowerCase()),t:'General',e:'Taken from the manual: “'+s.trim()+'”',ref:c.d+' p.'+c.pg,st:'draft'});made++}
+save();go('quiz')}
+
+/* ---------- Dashboard ---------- */
+function vDash(){if(S.role!='faculty')return`<div class="card"><h2>Your progress</h2><p>Quizzes taken: <b>${DB.quiz.length}</b> · Viva sessions: <b>${DB.viva.length}</b> · Simulation checks passed: <b>${DB.sim.filter(x=>x.ok).length}/${DB.sim.length}</b></p><h2 style="margin-top:14px">Submit to faculty</h2><p class="mu">Signed in as <b>${esc(USER.name)}</b>${BACKEND.managed?'':' ('+esc(USER.id)+')'}</p>${BACKEND.managed?'<input type="text" placeholder="Your roll number" value="'+esc(DB.roll||'')+'" onchange="DB.roll=this.value.trim().slice(0,30);save()">':''}<p>${BACKEND.shared?'<button class="btn" onclick="submitRes()">Submit to faculty</button> ':''}<button class="btn${BACKEND.shared?' alt':''}" onclick="exportRes()">Download results file</button> <button class="btn alt" onclick="copyRes()">Copy results text</button></p><p class="mu">Send the downloaded file to your faculty by email or your course portal.</p><p class="mu">Switch the role (top right) to Faculty to see the class dashboard.</p></div>`;
+let qa=DB.quiz.length?DB.quiz.reduce((a,x)=>a+x.sc/x.n,0)/DB.quiz.length*100:null,va=DB.viva.length?DB.viva.reduce((a,x)=>a+x.sc,0)/DB.viva.length:null,sp=DB.sim.filter(x=>x.ok).length;
+let imp=Object.entries(DB.sub||{}),rows=imp.length?imp.map(([n,s])=>{let q=s.quiz.length?Math.round(s.quiz.reduce((a,x)=>a+x.sc/x.n,0)/s.quiz.length*100):'–',v=s.viva.length?+(s.viva.reduce((a,x)=>a+x.sc,0)/s.viva.length).toFixed(1):'–';return[n,q,v,s.sim.filter(x=>x.ok).length+'/'+s.sim.length]}):[['Asha R',80,4,'4/5'],['Ravi K',60,3,'3/5'],['Meera S',100,4.5,'5/5'],['John T',40,2,'2/5']];if(qa!=null||va!=null||DB.sim.length)rows.push(['You (this device)',qa==null?'–':Math.round(qa),va==null?'–':+va.toFixed(1),sp+'/'+DB.sim.length]);
+let weak=imp.length?{}:{'Manometer head conversion':6,'Coefficient of discharge':4,'Pump efficiency':2},err=imp.length?{}:{'Manometer head not converted to water head':5,'cm/m unit mix-up':3,'Calculation mismatch':2};imp.forEach(([n,s])=>{s.quiz.forEach(q=>q.w.forEach(t=>weak[t]=(weak[t]||0)+1));s.sim.forEach(x=>{if(!x.ok)err[x.err]=(err[x.err]||0)+1})});
+DB.quiz.forEach(q=>q.w.forEach(t=>weak[t]=(weak[t]||0)+1));DB.sim.forEach(s=>{if(!s.ok)err[s.err]=(err[s.err]||0)+1});
+let ctr=x=>Object.entries(x).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<tr><td>${esc(k)}</td><td>${v}</td></tr>`).join('');
+return`<div class="g2"><div class="card"><h2>Weak topics (quiz misses)</h2><table>${ctr(weak)}</table></div><div class="card"><h2>Common errors in calculations</h2><table>${ctr(err)}</table></div></div>
+<div class="card"><h2>Class performance and marks</h2><div class="sc"><table><tr><th>Student</th><th>Quiz %</th><th>Viva /5</th><th>Sim checks</th><th>Auto mark /10</th><th>Final mark (override)</th></tr>${rows.map(r=>{let a=(r[1]=='–'||r[2]=='–')?'–':+((r[1]/10+r[2]*2)/2).toFixed(1);return`<tr><td>${esc(r[0])}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td>${a}</td><td><input type="number" step=".1" min="0" max="10" style="width:90px" value="${esc(DB.ovr[r[0]]??'')}" placeholder="${a}" data-n="${esc(r[0])}" onchange="DB.ovr[this.dataset.n]=this.value;save()"></td></tr>`}).join('')}</table></div><p class="mu">${imp.length?'Showing imported student files.':'Rows other than yours are sample class data.'} Faculty overrides are saved on this device.</p></div>
+<div class="card"><h2>Import student results</h2><input type="file" accept=".json,application/json" multiple onchange="impFiles(this)"><textarea id="pt" rows="3" placeholder="Or paste a student's results text here" style="margin-top:8px"></textarea><p>${BACKEND.shared?'<button class="btn" onclick="pullSubs()">Refresh from server</button> ':''}<button class="btn alt" onclick="impText($('#pt').value)&&go('dash')">Import pasted text</button> <button class="btn alt" onclick="DB.sub={};save();go('dash')">Clear imported</button></p><p class="mu">${imp.length} student file(s) imported. Importing the same student again replaces their earlier file.</p></div>`}
+const resPack=()=>JSON.stringify({app:'PracMentor',course:'ME422S',name:who(),at:new Date().toISOString(),quiz:DB.quiz,viva:DB.viva,sim:DB.sim});
+function exportRes(){let n=who();if(!n){alert('Enter your name and roll number first.');return}let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([resPack()],{type:'application/json'}));a.download='PracMentor_'+n.replace(/[^A-Za-z0-9]+/g,'_')+'.json';document.body.appendChild(a);a.click();a.remove()}
+function copyRes(){let n=who();if(!n){alert('Enter your name and roll number first.');return}let t=resPack();(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>alert('Copied. Paste it into a message to your faculty.'),()=>prompt('Copy this text:',t))}
+const num=x=>Number.isFinite(+x)?+x:0,str=x=>String(x??'').slice(0,80);
+function impText(t){try{let o=JSON.parse(t);if(!o||o.app!=='PracMentor'||!String(o.name||'').trim())throw 0;DB.sub=DB.sub||{};DB.sub[str(o.name).trim()]={at:str(o.at),quiz:(Array.isArray(o.quiz)?o.quiz:[]).slice(0,200).map(q=>({sc:num(q.sc),n:Math.max(1,num(q.n)),w:(Array.isArray(q.w)?q.w:[]).slice(0,50).map(str)})),viva:(Array.isArray(o.viva)?o.viva:[]).slice(0,200).map(v=>({sc:num(v.sc)})),sim:(Array.isArray(o.sim)?o.sim:[]).slice(0,500).map(s=>({ok:!!s.ok,err:str(s.err)}))};save();return true}catch(e){alert('That is not a valid PracMentor results file.');return false}}
+function impFiles(el){let p=Promise.resolve();[...el.files].forEach(f=>{p=p.then(()=>f.text()).then(impText)});p.then(()=>go('dash'))}
+
+
+/* ---------- Materials ---------- */
+function vMat(){return`<div class="card"><h2>Lab materials</h2><p class="mu">The chatbot and quiz generator use only these documents. Upload text files (.txt or .md); separate pages with a line containing --- . Text-based PDFs: copy the text into a .txt file, one page per section.</p>${S.role=='faculty'?`<input type="file" id="fu" accept=".txt,.md" onchange="upl(this)">`:'<p class="mu">Switch to Faculty to upload or remove documents.</p>'}
+${DB.docs.map((d,i)=>`<p><b>${esc(d.name)}</b> · ${d.pages.length} pages ${S.role=='faculty'?`<button class="btn alt" onclick="DB.docs.splice(${i},1);save();go('mat')">Remove</button>`:''}</p>`).join('')||'<p class="mu">No documents yet.</p>'}</div>
+<div class="card"><h2>Known limits</h2><p class="mu">Reference: IIT Kanpur Fluid Mechanics Virtual Lab (fm-iitk.vlabs.ac.in) for further simulations. This free version runs in your browser: answers use keyword retrieval over the materials, not a language model, and data is stored on this device. PDF parsing, a shared database and an LLM would be added with a server.</p></div>`}
+function upl(el){let f=el.files[0];if(!f)return;f.text().then(t=>{DB.docs.push({name:f.name,pages:t.split(/\f|\n-{3,}\n/)});save();go('mat')})}
+function vHome(){return`<div class="hero card"><h2>Prac<span>Mentor</span></h2><p>Digital-twin lab tutor for ME422S Fluid Mechanics &amp; Hydraulic Machines</p></div>
+<div class="steps">
+<button class="step" onclick="go('lab')"><i>1</i><b>Virtual Lab</b><span>Run ${E.length} experiments on a digital twin, from pumps to turbines.</span><em>Open Virtual Lab →</em></button>
+<button class="step" onclick="go('chat')"><i>2</i><b>Lab Chatbot</b><span>Ask about theory and safety, or take a viva.</span><em>Open Chatbot →</em></button>
+<button class="step" onclick="go('quiz')"><i>3</i><b>MCQ Quiz</b><span>Practise with MCQs that faculty review.</span><em>Start quiz →</em></button>
+<button class="step" onclick="go('dash')"><i>4</i><b>Dashboard</b><span>Faculty track class progress and set final marks.</span><em>Open Dashboard →</em></button>
+</div>
+<div class="roles2">
+<div class="card" ${S.role!='student'?'hidden':''}><h2>For students</h2><p class="mu">Practise, get answers on demand and see your progress.</p><div class="ex"><button onclick="asRole('student','lab')">Start experiment</button><button onclick="asRole('student','chat')">Ask a question</button><button onclick="asRole('student','quiz')">Take quiz</button><button onclick="asRole('student','dash')">Send my results</button></div></div>
+<div class="card" ${S.role!='faculty'?'hidden':''}><h2>For faculty</h2><p class="mu">Set the viva rubric, review MCQs and upload lab materials.</p><div class="ex"><button onclick="asRole('faculty','dash')">Class dashboard</button><button onclick="asRole('faculty','mat')">Lab materials</button><button onclick="asRole('faculty','quiz')">Review MCQs</button></div></div>
+</div>`}
+const hashTab=()=>{let h=(location.hash||'').slice(1);return TABS.some(t=>t[0]==h)?h:'home'};
+addEventListener('hashchange',()=>{if(USER)go(hashTab())});
+function vCourse(){return`<div class="card"><h2>Course content · ME422S</h2><p class="mu">Fluid Mechanics and Hydraulic Machines Lab: ${E.length} experiments. Open any experiment in the Virtual Lab.</p></div>
+${E.map((e,i)=>`<div class="card"><h2>${i+1}. ${esc(e.n)}</h2><p class="mu">Key relations: ${esc(e.fx||'')}</p><p><button class="btn" onclick="setEx(${i})">Open in Virtual Lab</button></p></div>`).join('')}
+<div class="card"><h2>Reading materials</h2>${DB.docs.map(d=>`<p><b>${esc(d.name)}</b> · ${d.pages.length} pages</p>`).join('')||'<p class="mu">No documents yet.</p>'}<p><button class="btn alt" onclick="go('mat')">Open Lab Materials</button></p></div>`}
+function asRole(r,t){if(USER&&USER.role===r)go(t)}
+function vLogin(){let f=S.lg=='faculty';return`<div class="card" style="max-width:460px;margin:30px auto"><h2 style="font-size:22px">Prac<span style="color:var(--am)">Mentor</span> sign in</h2><div class="ex" style="margin:8px 0 12px"><button class="${!f?'on':''}" onclick="S.lg='student';go('login')">Student</button><button class="${f?'on':''}" onclick="S.lg='faculty';go('login')">Faculty</button></div>
+<label class="mu" for="ln">Full name</label><input type="text" id="ln" autocomplete="name">
+<label class="mu" for="li">${f?'Faculty ID or email':'Roll number'}</label><input type="text" id="li">
+${f?'<label class="mu" for="lc">Access code</label><input type="password" id="lc" autocomplete="current-password">':''}
+<p id="le" class="bad"></p><p><button class="btn" onclick="doLogin()">Sign in as ${f?'faculty':'student'}</button></p><p class="mu"><a href="${COVER}" target="_blank" rel="noopener">← Back to cover slide</a></p>
+${CFG.mode=='local'?'<p class="mu">Demo mode: sign-in is checked in this browser only and is not secure. Real sign-in needs the server connection in the handoff spec.</p>':''}</div>`}
+async function doLogin(){let f=S.lg=='faculty',n=$('#ln').value.trim(),i=$('#li').value.trim(),c=f?$('#lc').value:'';if(!n||!i){$('#le').textContent='Enter your name and '+(f?'faculty ID':'roll number')+'.';return}try{start(await BACKEND.signIn(S.lg,i.slice(0,40),n.slice(0,60),c))}catch(e){$('#le').textContent=e.message||'Sign-in failed.'}}
+async function start(u){USER=u;DB.quiz=[];DB.viva=[];DB.sim=[];DB.roll='';await BACKEND.load(u,DB);ensureDocs();S.role=u.role;$('#role').value=u.role;S.chat=[];S.viva=null;S.qz=null;$('#who').textContent=u.name+' · '+u.role;$('#so').style.display='';$('#so').textContent=BACKEND.managed?'Exit to cover':'Sign out';go(hashTab())}
+let COVER='cover.html';
+function toCover(){location.href=COVER}
+function signOut(){if(BACKEND.managed){toCover();return}BACKEND.signOut();USER=null;$('#who').textContent='';$('#so').style.display='none';go('login');toCover()}
+async function submitRes(){try{let r=await BACKEND.submitResults(USER,JSON.parse(resPack()));alert(r&&r.ok?'Submitted to faculty.':'Could not submit.')}catch(e){alert('Could not submit: '+e.message)}}
+async function pullSubs(){try{let a=await BACKEND.fetchSubmissions();(a||[]).forEach(o=>impText(JSON.stringify(o)));go('dash')}catch(e){alert('Could not refresh: '+e.message)}}
+async function loadCfg(){try{let r=await fetch('config.json',{cache:'no-store'});if(r.ok)Object.assign(CFG,await r.json())}catch(e){}
+try{let r=await fetch('data/materials.json',{cache:'no-store'});if(r.ok){let m=await r.json();if(Array.isArray(m)&&m.length)DB.docs=cl(m)}}catch(e){}
+if(CFG.coverUrl)COVER=CFG.coverUrl;BACKEND=CFG.mode==='http'?HttpAdapter:LocalAdapter}
+function boot(){S.lg='student';$('#v').innerHTML='<div class="card"><p class="mu">Loading…</p></div>';(async()=>{await loadCfg();try{if(await ArtifactAdapter.init())BACKEND=ArtifactAdapter}catch(e){}
+let u=null;try{u=await BACKEND.restore()}catch(e){}
+if(!u&&BACKEND.managed){BACKEND=LocalAdapter;try{u=await LocalAdapter.restore()}catch(e){}}
+u?start(u):go('login')})()}
+setEx(0);boot();
+</script></body></html>

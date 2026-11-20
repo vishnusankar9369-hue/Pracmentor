@@ -1,0 +1,41 @@
+html,body{margin:0;height:100%;background:#0b1226;overflow:hidden}
+#stage{position:absolute;width:1920px;height:1080px;transform-origin:0 0}
+#stage section{position:relative;width:1920px;height:1080px;box-sizing:border-box}
+section.info{padding:128px 128px 160px;background:#16213E;color:#F6F3EC;font-family:'Inter',sans-serif;display:flex;flex-direction:column;justify-content:space-between}
+.info h1{font-family:'Space Grotesk',sans-serif;font-size:96px;font-weight:700;line-height:1.1;margin:0}
+.info .hl{color:#F2A33A}
+.info .tag{font-size:36px;line-height:1.3;margin:12px 0 0;color:#D9D4C7}
+.info .flow{display:flex;align-items:center;gap:20px}
+.info .card{flex:1;background:#22305A;border-radius:24px;padding:36px 28px;display:flex;flex-direction:column;gap:16px}
+.info .num{width:72px;height:72px;border-radius:36px;background:#F2A33A;color:#0E1A2B;font-family:'Space Grotesk',sans-serif;font-size:40px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.info .card h3{font-family:'Space Grotesk',sans-serif;font-size:44px;font-weight:700;line-height:1.1;margin:0}
+.info .card p{font-size:28px;line-height:1.4;margin:0;color:#D9D4C7}
+.info .roles{display:flex;gap:32px}
+.info .role{flex:1;background:#4FD1BC;color:#0E1A2B;border-radius:24px;padding:28px 36px}
+.info .role h3{font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:700;line-height:1.1;margin:0 0 8px}
+.info .role p{font-size:28px;line-height:1.4;margin:0}
+.info .foot{position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;margin:0;color:#D9D4C7}
+section.cover{background:#16213E;color:#F6F3EC;font-family:'Inter',sans-serif;overflow:hidden}
+.cover .kick{position:absolute;left:128px;top:112px;margin:0;font-size:30px;font-weight:600;letter-spacing:.04em;color:#F2A33A}
+.cover h1{position:absolute;left:128px;top:176px;margin:0;font-family:'Space Grotesk',sans-serif;font-size:170px;font-weight:700;line-height:1.1}
+.cover .hl{color:#F2A33A}
+.cover .tag{position:absolute;left:128px;top:400px;margin:0;font-size:42px;line-height:1.3;color:#D9D4C7}
+.cover .pipe{position:absolute;left:128px;top:540px}
+.cover .pipe text{font-family:'Space Grotesk',sans-serif}
+.cover .wave{position:absolute;left:0;top:880px}
+.cover .w1{animation:drift 9s linear infinite}
+.cover .w2{animation:drift 14s linear infinite reverse}
+.cover .bb{position:absolute;top:992px;width:22px;height:22px;border-radius:11px;border:3px solid #4FD1BC;opacity:0;animation:bub 4.8s ease-in infinite}
+.cover .flow{animation:flow 2s linear infinite}
+.cover .nd{transform-box:fill-box;transform-origin:center;animation:pulse 2.4s ease-in-out infinite}
+.cover .rise{animation:rise .9s ease-out both}
+@keyframes rise{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+@keyframes flow{to{stroke-dashoffset:-104}}
+@keyframes drift{from{transform:translateX(0)}to{transform:translateX(-1920px)}}
+@keyframes bub{0%{transform:translateY(0);opacity:0}15%{opacity:.8}100%{transform:translateY(-300px);opacity:0}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+@media (prefers-reduced-motion:reduce){.cover *{animation:none!important;opacity:1!important}.cover .bb{display:none}}
+.tabs{position:absolute;left:128px;top:56px;display:flex;gap:14px;z-index:5}
+.tabs a{padding:14px 24px;border-radius:999px;background:#22305A;color:#F6F3EC;font:600 26px 'Inter',sans-serif;text-decoration:none;border:2px solid #4FD1BC}
+.tabs a.go{background:#F2A33A;color:#0E1A2B;border-color:#F2A33A;font-weight:700}
+.cover .launch{position:absolute;left:128px;top:56px;z-index:5;padding:16px 34px;border-radius:999px;background:#F2A33A;color:#0E1A2B;font:700 30px 'Inter',sans-serif;text-decoration:none}
